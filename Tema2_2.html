@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tema 2</title>
+		<style>
+		*{
+			box-sizing:border-box;
+		}
+		html, body{
+			margin:0;
+			padding:0;
+		}
+		
+		#website{
+			max-width: 1024px;
+			margin: 0 auto;
+		}
+		
+		#header{
+			background-color: #bcda2d;
+			height: 160px;
+			border:1px solid lightgrey;
+			padding:30px;
+			margin-top:10px;
+		}
+
+		#footer{
+			background-color: #bcda2d;
+			height: 50px;
+			border:1px solid lightgrey;
+			padding:20px;
+			margin:15px;
+			text-align:center;
+			font-size:15px;
+			margin-bottom:10px;
+		}
+
+		body{
+			background-color:#e0d38e;
+		}
+		.header-right{
+			max-width: 300px;
+			margin: 0 0 0 auto;
+		}
+		#site_title{
+			font-size:32px;
+			
+		}
+		#site_slogan{
+			margin-top:5px;
+			font-size:24px;
+			color:#4a4a4a;
+		}
+		#main{
+			margin-top:5px;
+			background-color:#f0e8c3;
+			padding-bottom:1px;
+			
+		}
+		#navbar{
+			text-align: center;
+			background-color:#e9e6d0;
+			margin:10px;
+			padding:5px;
+		}
+		#navbar > button{
+			color: #293123;
+			background-color: transparent;
+			border: none;
+			padding: 8px;
+			width: 15%;
+			
+		}
+		#navbar > button:not(:last-child){
+			border-right:1px solid #c7c7c7;;
+		}
+		#left-side{
+			width:30%;
+			min-height:500px;
+			display:inline-block;
+			float:left;
+			border-right:1px solid #c7c7c7;
+			padding:10px 15px 10px 10px;
+		}
+		#right-side{
+			width:70%;
+			min-height:500px;
+			display:inline-block;
+			float:left;
+		}
+		.menu-header{
+			background-color:#d2d35e;
+			font-size:32px;
+			font-weight:bold;
+			padding:10px;
+		}
+		#left-side ul{
+			padding-left:8px;
+		}
+		#left-side li{
+			text-decoration: underline;
+			font-size: 20px;
+			list-style: none;
+			margin-bottom: 5px;
+		}
+		#left-side li:before{
+			content: '';
+			display: inline-block;
+			height: 12px;
+			width: 12px;
+			margin-right:5px;
+			background-image: url(https://cdn.iconscout.com/icon/premium/png-256-thumb/dots-19-447541.png);
+			background-size: 12px;
+		}
+
+		.menu-header:before{
+			content: '';
+			display: inline-block;
+			height: 12px;
+			width: 12px;
+			margin-right:5px;
+			background-image: url(https://www.iconspng.com/uploads/arrow-right-black-outline/arrow-right-black-outline.png);
+			background-size: 12px;
+		}
+		.titluri{
+			font-size:24px;
+			padding-left:10px;
+			
+		}
+		.textnormal{
+			margin-top:5px;
+			padding-left:10px;
+		}
+		.bottomtext{
+			display: flex;
+			padding-left:10px;
+			
+		}
+
+		.otherservices{
+			padding-left:10px;
+		}
+		a.button{
+			background-color: #bcda2d;
+			border: solid 1px;
+			font-weight: bold;
+    		padding:10px;
+			text-align:center;
+			width: 15%;
+			margin-left:10px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="website">
+			<div id="header">
+				<div class="header-right">
+					<div id="site_title">Enter Site Title</div>
+					<div id="site_slogan">Enter Site Slogan</div>
+				</div>
+			</div>
+			<div id="main">
+				<div id="navbar">
+					<button>Home</button>
+					<button>New Page</button>
+					<button>New Page 2</button>
+					<button>New Page 3</button>
+					<button>New Page 4</button>
+					<button>New Page 5</button>
+				</div>
+				<div id="left-side">
+					<div class="menu-header">Main Menu</div>
+					<ul>
+						<li>Menu Item 1</li>
+						<li>Menu Item 2</li>
+						<li>Menu Item 3</li>
+						<li>Menu Item 4</li>
+						<li>Menu Item 5</li>
+						<li>Menu Item 6</li>
+						<li>Menu Item 7</li>
+						<li>Menu Item 8</li>
+					</ul>
+					
+					
+					<div class="menu-header">Block</div>
+					<div style="margin:10px;">
+						Enter block content here...
+					</div>
+					<div >
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
+					</div>
+				</div>
+			
+				<div id="right-side">
+					<div class="uppertext">
+						<h2 class="titluri">Gallery</h2>
+						<p class="textnormal">Lorem Ipsum este pur şi simplu o machetă pentru text a industriei tipografice. Lorem Ipsum a fost macheta standard a industriei încă din secolul al XVI-lea, când un tipograf anonim a luat o planşetă de litere şi le-a amestecat pentru a crea o carte demonstrativă pentru literele respective. Nu doar că a supravieţuit timp de cinci secole, dar şi a facut saltul în tipografia electronică practic neschimbată. A fost popularizată în anii '60 odată cu ieşirea colilor Letraset care conţineau pasaje Lorem Ipsum, iar mai recent, prin programele de publicare pentru calculator, ca Aldus PageMaker care includeau versiuni de Lorem Ipsum.</p>
+					</div>
+					
+					<div class="bottomtext">
+						<div class='subscription'>
+							<h2 class="titluri">Subscription</h2>
+							<p class="textnormal">Lorem ipsum dolor sit amet, massa praesent quis tellus ut in, eu cillum iaculis elit pulvinar nulla et, mauris nunc mauris lobortis habitant massa amet, lectus vel justo id felis non, congue accumsan faucibus sagittis. Varius nulla at dolor blandit vel, anim pellentesque. Nam vivamus odio risus ante, mauris adipiscing ante tortor pede ante. Pellentesque sem sed turpis, egestas tortor platea tellus dolor. Tellus consequat duis at, auctor faucibus varius vitae dignissim tincidunt vel.</p>
+							<br>
+							<a class="button">Read more</a>
+						</div>
+
+						<hr style="border: 1px dotted #2d1604; color:transparent;" "width="1" size="305">
+
+						<div class="otherservices">
+							<h2 class="titluri">Other services</h2>
+							<p class="textnormal">A lorem tortor egestas, nibh diam suspendisse. Nam augue mi etiam est montes sapien. Vehicula vestibulum mauris id, etiam ipsum felis dolor lacus vestibulum faucibus, lacinia sed. Ad nisl luctus morbi, enim nibh donec integer mattis, tempor amet congue, natoque integer et ullamcorper tincidunt ac. Ligula lacus, eu ac ut. Mollis id vel consequat in feugiat eget, velit neque ultricies lectus sit, nibh faucibus conubia minima adipiscing in vel. Vel viverra, ligula tortor, etiam arcu sit.</p>
+							<br>
+							<a class="button">Read more</a>
+						</div>
+					</div>
+				
+				</div>
+				<br style="clear:both;"/>
+				
+				<div id="footer">
+					<div >Copyright © 2014.</div>
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+</html>
