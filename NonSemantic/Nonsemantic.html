@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tema 6 - NonSemantic</title>
+		<style>
+		*{
+			box-sizing:border-box;
+           /* border:1px solid white; */
+		}
+		html, body{
+			margin:0;
+			padding:0;
+            background-color: black;
+            font-size: 100%;
+		}
+		
+		#website{
+			max-width: 960px;
+            height: 530px;
+			margin: 150px 250px auto;
+            border:2px solid darkgoldenrod;
+           overflow: auto;
+		}
+
+		#header{
+			text-align: left;
+			height: 110px;
+            font-family:Arial, Helvetica, sans-serif;
+            background-color:#eca92e;
+		}
+
+		#site_title{
+			font-size: 8vw;   /*110px;*/
+            color:#ff8100;
+			height: 110px;
+            font-weight: 700;
+            margin-left:15px;
+		}
+
+        #main{
+            width:100%;
+            min-height: 342px;
+            display: flex;
+           
+        }
+
+        #main:after{
+            clear:both;
+        }
+
+        #left-side{
+            width:22%;
+            background-color:#fbc80bf2;
+            min-height:379px; 
+        }
+
+        #left-side p{
+			font-size: 19px;
+			margin: 40px 20px 0px;
+            font-weight: 900;
+            color: #b35c03;
+		}
+
+        #left-side ul{
+			padding-left:2px;
+            margin-top: 6px;
+            margin-bottom: 0px;
+		}
+
+        #left-side ul a{
+            text-decoration: none;
+        }
+		
+        #left-side li{
+			font-size: 18px;
+            font-weight: 500;
+			list-style: none;
+			margin-bottom: 5px;
+            margin-left: 20px;
+            padding:1px;
+		}
+
+        .picture{
+            display:block;
+            margin: 25px 20px 25px;
+        }
+
+        #right-side{
+            background-color:rgb(240, 231, 79);
+            width:78%;
+            min-height:379px; 
+        }
+
+        #right-side h1{
+            font-size: 32px;
+            font-family: Arial, Helvetica, sans-serif;
+			margin: 30px 40px 0px;
+            font-weight: 700;
+            color: #b35c03;
+        }
+
+        #right-side h2{
+            font-size: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+			margin: 20px 40px 0px;
+            font-weight: 700;
+            color: #b15c03;
+        }
+
+        #right-side p{
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+			margin: 12px 40px 0px;
+        }
+
+        #right-side a{
+            text-decoration: none;
+        }
+
+        #footer{
+            height: 37px;
+           
+            background-color:#fdbb04;
+            font-weight: 600;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        #footer p{
+            margin: 0px 25px;
+            padding-top:10px;
+            font-size: 1vw;
+        }
+
+        #footer a{
+            text-decoration: none;
+            font-size: 1vw;
+        }    
+
+        .visited{
+            color:#7158fd;
+        }
+
+       
+
+        </style>
+
+</head>
+<body>
+	<div id="website">
+        <div id="header">
+            <div id="site_title">Name Of Site</div>
+        </div>
+        
+       <div id="main">  
+            <div id="left-side">
+
+                <p>Section Title</p>     
+                <ul>
+                    <li><a href="">menu item 1</a></li>
+                    <li><a href="">menu item 2</a></li>
+                    <li><a href="">menu item 3</a></li>
+                    <li><a href="">menu item 4</a></li>
+                    <li><a href="">menu item 5</a></li>
+                    <li><a href="">menu item 6</a></li>
+                </ul>
+                
+            
+               <img src="xhtml.png" alt="W3C XHTML 1.0" class="picture">
+               <img src="css.png" alt="W3C XHTML CSS" class="picture"> 
+            </div>
+
+            <div id="right-side">
+               
+                <h1>An example using non-semantic mark-up</h1>
+                <p>This is one of two sample pages created to demonstrate the difference between pages using semantic HTML mark-up and those that don't.</p>
+                <h2>What you see isn't always what you get</h1>
+            
+                <p>
+                    If you compare this page with the one using <a href=" ">semantic mark-up</a>, you won't see significant differences in your browser.
+                    <br><br>
+                    But what's on the inside can make a world of difference for accessibility, search engine optimization, and workflow. Read the accompanying blog entry to learn more.
+                </p>
+           
+            </div>
+            
+           
+        </div> 
+
+        <div id="footer">
+            <p>&copy; 2009 <a href="" class="visited">Heidi Adams Cool </a>&bull; Web Design & Strategy &bull; Cleveland, OH, USA &bull;
+            <a href="">About this site</a> &bull; <a href="" class="visited">Contact me</a> &bull; <a href="">Search</a>
+            </p>
+        </div>
+
+</body>
+</html>
