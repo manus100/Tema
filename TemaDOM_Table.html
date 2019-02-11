@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tema DOM</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Manuela">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        form {
+            width: 55%;
+            min-width: 450px;
+            margin: 0 auto;
+            border: 3px solid black;
+            background: bisque;
+            height: auto;
+        }
+
+        fieldset {
+            display: block;
+            margin: 10px 2px 0px;
+            padding-top: 0.35em;
+            padding-bottom: 0.625em;
+            padding-left: 0.75em;
+            padding-right: 0.75em;
+            border: 2px solid groove;
+            background-color: moccasin;
+        }
+
+        fieldset legend {
+            text-align: center;
+            font-weight: bold;
+            vertical-align: top;
+        }
+
+        fieldset label {
+            margin-right: 0.3em;
+        }
+
+        fieldset label:not(:first-of-type) {
+            margin-left: 0.8 em;
+        }
+
+        td {
+            width: 33.3%
+        }
+
+        input[type=text],
+        select {
+            background: #f7f5e9;
+            width: 53%;
+            padding: 0.3em;
+            margin: 1em 0.7em 0.7em 0em;
+            display: inline-block;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type=text]:focus,
+        select:focus {
+            background-color: white;
+            outline: none;
+        }
+
+        select {
+            width: 52%;
+            vertical-align: middle;
+        }
+
+        input[type=checkbox],
+        input[type=radio] {
+            outline: 2px solid lightyellow;
+            margin: 8px 0px 10px 0;
+            vertical-align: middle;
+        }
+
+        .checkboxes label:first-of-type {
+            padding: 5px 15px 5px 10px;
+        }
+
+        .checkboxes label {
+            padding: 5px 10px;
+        }
+
+        .radios label:first-of-type {
+            padding: 5px 7px 5px 55px;
+        }
+
+        .radios label {
+            padding: 0px 9px;
+        }
+
+
+        input[type=submit] {
+            background-color: #fdb615;
+            width: 30%;
+            height: 35px;
+            border: 2px solid saddlebrown;
+            border-radius: 10px;
+            margin: auto;
+            display: block;
+            text-align: center;
+            font-size: 1.5em;
+
+        }
+
+        label {
+            font-size: 1em;
+        }
+
+        .green {
+            color: forestgreen;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .result {
+            text-align: right;
+        }
+
+        img {
+            width: 100%;
+            height: 50%;
+            ;
+            margin: 0 auto;
+        }
+
+ 
+    </style>
+
+    <script>
+        var blankImg = "http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg";
+        var xImg = "http://www.drodd.com/images14/x12.jpg";
+
+        function colorIfEquals(a, b) {
+            var a = document.querySelector('[name="Ex1Val1"]').value;
+            var b = document.querySelector('[name="Ex1Val2"]').value;
+            if (a != '' && b != '') {
+                if (a === b) {
+                    document.querySelector('[name="Ex1Val1"]').classList.add("green");
+                    document.querySelector('[name="Ex1Val2"]').classList.add("green");
+                } else {
+                    document.querySelector('[name="Ex1Val1"]').classList.remove("green");
+                    document.querySelector('[name="Ex1Val2"]').classList.remove("green");
+                }
+            }
+        }
+
+
+        function checkIfEqualOrGreater() {
+            var a = document.querySelector('[name="ex2Val1"]').value;
+            var b = document.querySelector('[name="ex2Val2"]').value;
+
+            if (a != '' && b != '') {
+                if (a === b) {
+                    document.querySelector('[name="ex2Val1"]').classList.add("green");
+                    document.querySelector('[name="ex2Val2"]').classList.add("green");
+                } else if (a > b) {
+                    document.querySelector('[name="ex2Val1"]').classList.add("green");
+                    document.querySelector('[name="ex2Val2"]').classList.remove("green");
+                } else {
+                    document.querySelector('[name="ex2Val1"]').classList.remove("green");
+                    document.querySelector('[name="ex2Val2"]').classList.add("green");
+                }
+            }
+        }
+
+        function returnMax() {
+            var a = document.querySelector('[name="ex3Val1"]').value
+            var b = document.querySelector('[name="ex3Val2"]').value
+
+            if (a != '' && b != '') {
+                if (a >= b) {
+                    document.querySelector('[name="ex3Val3"]').value = a;
+                } else {
+                    document.querySelector('[name="ex3Val3"]').value = b;
+                }
+            }
+        }
+
+        function sum(elem, event) {
+            if (event.key >= "0" && event.key <= "9") {
+                window.addEventListener('keyup', function () {
+                    var a = document.querySelector('[name="ex4Val1"]').value
+                    var b = document.querySelector('[name="ex4Val2"]').value
+                    document.querySelector('[name="ex4Val3"]').value = parseInt(a) + parseInt(b);
+                })
+            } else {
+                event.preventDefault();
+            }
+        }
+
+        function count() {
+            var str = " characters"
+            document.getElementById("resultEx5").innerHTML = document.querySelector('[name="ex5"]').value.length + str;
+        }
+
+        function stop() {
+            var str = " characters"
+
+            var nr = document.querySelector('[name="ex6"]').value.length
+            //console.log(nr);    //la primul caracter tastat keypress returneaza 0, keyup 1
+            document.getElementById("resultEx6").innerHTML = nr + str;
+
+            if (nr == 10) {
+                document.getElementById("resultEx6").classList.add("red");
+                event.preventDefault();
+            } else {
+                document.getElementById("resultEx6").classList.remove("red");
+            }
+        }
+
+
+        function justDigits(elem, event) {
+            if (!(event.key >= "0" && event.key <= "9")) {
+                event.preventDefault();
+            }
+        }
+
+        function changeImg(img) {
+            if (img.getAttribute("src") === blankImg) {
+                img.setAttribute("src", xImg);
+            }
+        }
+
+        function changeImgBack(img) {
+            console.log(this);
+            if (img.getAttribute("src") === xImg) {
+                img.setAttribute("src", blankImg);
+            }
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <fieldset id="template">
+            <legend>Template tema DOM</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="valoare1">First value: &emsp; </label>
+                        <input type="text" placeholder="Enter the first value" name="val1" id="valoare1" tabindex="1"
+                            title="Enter the first value" />
+                    </td>
+
+                    <td>
+                        <label for="valoare2">Second value:</label>
+                        <input type="text" placeholder="Enter the second value" name="val2" id="valoare2" tabindex="2"
+                            title="Enter the second value" />
+                    </td>
+
+                    <td>
+                        <label for="valoare3">Result:</label>
+                        <input type="text" placeholder="Result" name="val3" id="valoare3" disabled />
+                    </td>
+                </tr>
+
+                <tr rowspan="4"></tr>
+                <td>
+                    <label for="exercitiu" style="margin-left:0px; margin-right:0px;"> Select exercise:</label>
+                    <select name="exercitiu" id="exercitiu" tabindex="3">
+                        <option value="1" selected>Exercise 1</option>
+                        <option value="2">Exercise 2</option>
+                        <option value="3">Exercise 3</option>
+                        <option value="4">Exercise 4</option>
+                        <option value="5">Exercise 5</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="lang">Select a value:</label>
+                    <select name="language" id="lang" tabindex="4" multiple>
+                        <option value="html" selected>HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="3">
+                        <div class="checkboxes">
+                            <span>Favourite fruit:</span>
+                            <label for="apple">Apple </label>
+                            <input type="checkbox" name="fruit" value="apple" id="apple" tabindex="5" />
+
+                            <label for="grapes">Grapes</label>
+                            <input type="checkbox" name="fruit" value="grapes" id="grapes" tabindex="6" />
+
+                            <label for="mango">Mango</label>
+                            <input type="checkbox" name="fruit" value="mango" id="mango" tabindex="7" />
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">
+                        <div class="radios">
+                            <br>Gender:
+                            <label for="gm">Male</label>&emsp;
+                            <input name="gender" type="radio" id="gm" value="m" tabindex="8" />
+                            <label for="gf">Female</label>
+                            <input name="gender" type="radio" id="gf" value="f" tabindex="9" />
+                        </div>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td colspan="3"><br>
+                        <div><input type="submit" tabindex="10" /></div>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+
+        <br>
+
+        <fieldset>
+            <legend>Tema DOM - Exercitiul 1</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="Ex1Val1">First value: </label>
+                        <input type="text" placeholder="Enter the first value" name="Ex1Val1" id="Ex1Val1" tabindex="11"
+                            onkeyup="colorIfEquals();" />
+                    </td>
+
+                    <td>
+                        <label for="Ex1Val2">Second value:</label>
+                        <input type="text" placeholder="Enter the second value" name="Ex1Val2" id="Ex1Val2"
+                            tabindex="12" onkeyup="colorIfEquals();" />
+                    </td>
+
+                </tr>
+            </table>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Tema DOM - Exercitiul 2</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="ex2Val1">First value: </label>
+                        <input type="text" placeholder="Enter the first value" name="ex2Val1" tabindex="13"
+                            onkeyup="checkIfEqualOrGreater()" />
+                    </td>
+
+                    <td>
+                        <label for="ex2Val2">Second value:</label>
+                        <input type="text" placeholder="Enter the second value" name="ex2Val2" tabindex="14"
+                            onkeyup="checkIfEqualOrGreater()" />
+                    </td>
+
+                </tr>
+            </table>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Tema DOM - Exercitiul 3</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="ex3Val1">First value: </label>
+                        <input type="text" placeholder="Enter the first value" name="ex3Val1" tabindex="15"
+                            onkeyup="returnMax()" />
+                    </td>
+
+                    <td>
+                        <label for="ex3Val2">Second value:</label>
+                        <input type="text" placeholder="Enter the second value" name="ex3Val2" tabindex="16"
+                            onkeyup="returnMax()" />
+                    </td>
+
+                    <td>
+                        <label for="valoare3">Result:</label>
+                        <input type="text" placeholder="Result" name="ex3Val3" disabled />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Tema DOM - Exercitiul 4</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="ex4Val1">First value: </label>
+                        <input type="text" placeholder="Enter the first value" name="ex4Val1" tabindex="17" value=0
+                            onkeypress="sum(this,event)" />
+                    </td>
+
+                    <td>
+                        <label for="ex4Val2">Second value:</label>
+                        <input type="text" placeholder="Enter the second value" name="ex4Val2" tabindex="18" value=0
+                            onkeypress="sum(this,event)" />
+                    </td>
+
+                    <td>
+                        <label for="valoare3">Result:</label>
+                        <input type="text" placeholder="Result" name="ex4Val3" disabled />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Tema DOM - Exercitiul 5</legend>
+
+            <label for="ex5">Enter text: </label>
+            <input type="text" placeholder="Enter text" name="ex5" onkeyup="count()" />
+
+            <div id="resultEx5" class="result">0 characters</div>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Tema DOM - Exercitiul 6</legend>
+
+            <label for="ex6">Enter text: </label>
+            <input type="text" placeholder="Enter text" name="ex6" title="Introduceti maxim 10 caractere"
+                onkeypress="stop()" onkeyup="stop()" />
+            <!--trebuie sa folosesc ambele evenimente, doar cu keypress incepe numaratoarea cu un delay de 1 caracter-->
+            <!--pot limita nr maxim de caractere si cu maxlength="10"-->
+
+            <div id="resultEx6" class="result">0 characters</div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Tema DOM - Exercitiul 7</legend>
+
+            <label for="ex7">Enter text: </label>
+            <input type="text" placeholder="Enter text" name="ex7" title="Introduceti doar cifre"
+                onkeypress="justDigits(this,event)" />
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Tema DOM - Exercitiu poze</legend>
+            <br />
+            <table border="1">
+                <tr>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                </tr>
+
+                <tr>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                </tr>
+
+                <tr>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                    <td><img onmouseover="changeImg(this);" onmouseout="changeImgBack(this);"
+                            src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" /></td>
+                </tr>
+
+
+            </table>
+
+        </fieldset>
+
+
+    </form>
+</body>
+
+</html>
