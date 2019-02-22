@@ -81,7 +81,7 @@
                 });
             }
         }
-        
+
 
         function save(form, event) {
             event.preventDefault();
@@ -114,7 +114,11 @@
 
         function remove(idx) {
             persoane.splice(idx, 1);
-            draw();
+            if (persoane.length >= 1) {
+                draw();
+            } else {
+                document.getElementById("ftable").classList.add("hidden");
+            }
         }
 
         function draw() {
