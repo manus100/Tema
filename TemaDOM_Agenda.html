@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tema DOM - Agenda telefonica</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: papayawhip;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 0px;
+        }
+
+        form {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        fieldset {
+            background-color: #ffd100;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 17px;
+            border: none;
+            padding-top: 20px;
+        }
+
+        label:not(:first-of-type) {
+            margin-left: 5px;
+        }
+
+        input[type="text"] {
+            border-radius: 5px;
+            height: 25px;
+            width: 190px;
+            margin-left: 5px;
+        }
+
+        input[type=submit] {
+            background-color: #0202bd;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            height: 35px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            padding: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        th,
+        td {
+            width: 30%;
+        }
+    </style>
+
+    <script>
+        var persoane = [];
+        var index = -1;
+
+        /* daca vroiam pe butonul submit: 
+        document.getElementById("btn").addEventListener("submit", function (e) {})
+        */
+        function checkIfEnter(elem, event) {
+            if (event.keyCode === 13) {
+                document.forms["myForm"].addEventListener("submit", function (e) {
+                });
+            }
+        }
+        
+
+        function save(form, event) {
+            event.preventDefault();
+
+            var newPers = {
+                nume: document.getElementById("nume").value,
+                telefon: document.getElementById("telefon").value
+            }
+
+            if (index === -1) {
+                //add
+                persoane.push(newPers);
+            } else {
+                //update
+                persoane.splice(index, 1, newPers);
+                index = -1;
+            }
+            //console.log(persoane);
+            draw();
+            form.reset();
+        }
+
+
+        function edit(idx) {
+            document.querySelector('[name="nume"]').value = persoane[idx].nume;
+            document.querySelector('[name="telefon"]').value = persoane[idx].telefon;
+
+            index = idx;
+        }
+
+        function remove(idx) {
+            persoane.splice(idx, 1);
+            draw();
+        }
+
+        function draw() {
+            var str = ``
+            for (var i = 0; i < persoane.length; i++) {
+                str += `
+                    <tr>
+                        <td>${persoane[i].nume}</td>
+                        <td>${persoane[i].telefon}</td>
+                        <td><a href="#" onclick="edit(${i});">Modifica</a></td>
+                        <td><a href="#"  onclick="remove(${i});">Sterge</a></td>
+                    </tr>
+                `
+            }
+
+            document.querySelector("table>tbody").innerHTML = str;
+            document.getElementById("ftable").classList.remove("hidden");
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Agenda</h1>
+    <br>
+    <form id="myForm" onsubmit="save(this,event)">
+        <fieldset>
+            <label for="nume">Nume: </label>
+            <input type="text" name="nume" id="nume" tabindex="1" title="Introduceti numele" />
+
+            <label for="telefon">Telefon:</label>
+            <input type="number" name="telefon" id="telefon" tabindex="2" title="Introduceti telefonul"
+                onkeypress="checkIfEnter(this,event)" />
+            <br>
+            <input type="submit" tabindex="3" value="ADAUGA CONTACT" id="btn" />
+
+        </fieldset>
+
+        <fieldset class="hidden" id="ftable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Telefon</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
