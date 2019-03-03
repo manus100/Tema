@@ -72,8 +72,8 @@
         var persoane = [];
         var index = -1;
 
-        /* daca vroiam pe butonul submit: 
-        document.getElementById("btn").addEventListener("submit", function (e) {})
+        /* functia de mai jos este inutila, face oricum submit pe enter pentru ca am 
+           un buton de tip submit; am pus-o doar ca sa respect cerinta din tema
         */
         function checkIfEnter(elem, event) {
             if (event.keyCode === 13) {
@@ -138,6 +138,10 @@
             document.getElementById("ftable").classList.remove("hidden");
         }
 
+        function noenter() {
+            return !(window.event && window.event.keyCode == 13);
+        }
+
     </script>
 </head>
 
@@ -147,7 +151,9 @@
     <form id="myForm" onsubmit="save(this,event)">
         <fieldset>
             <label for="nume">Nume: </label>
-            <input type="text" name="nume" id="nume" tabindex="1" title="Introduceti numele" />
+            <!--comportamentul default pe enter este sa faca submit pentru ca am buton de tip submit -->
+            <input type="text" name="nume" id="nume" tabindex="1" title="Introduceti numele"
+                onKeyPress="return noenter()" />
 
             <label for="telefon">Telefon:</label>
             <input type="number" name="telefon" id="telefon" tabindex="2" title="Introduceti telefonul"
