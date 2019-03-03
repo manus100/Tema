@@ -1,0 +1,191 @@
+<head>
+    <title>Tema DOM - Shopping list</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+
+        h1 {
+            padding-left: 0px;
+            font-size: 1.35em;
+            width: 75%;
+            text-shadow: 1.1px 0 #888888;
+            letter-spacing: 1.2px;
+            line-height: 1.5px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        #backg {
+            max-width: 870px;
+            height: 85%;
+            margin: 0px auto;
+            text-align: center;
+            background-color: #d2b7fd;
+        }
+
+        form {
+            background-color: white;
+            width: 93%;
+            margin-left: 30px;
+            margin-top: -10px;
+            border-radius: 10px;
+            font-size: 17px;
+            border: none;
+        }
+
+        fieldset {
+            border: none;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        input[type=text] {
+            width: 280px;
+            height: 50px;
+            margin-left: 190px;
+        }
+
+        #btn {
+            width: 100px;
+            height: 50px;
+            background-color: lightgreen;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .sort {
+            width: 80px;
+            height: 26px;
+            background-color: #d48bec;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        div,
+        table {
+            margin-left: 190px;
+        }
+
+        th,
+        td {
+            width: 35%;
+            text-align: left;
+        }
+
+        .itemBtn {
+            width: 120px;
+            height: 26px;
+            background-color: #f79489;
+            font-size: 17px;
+            border-radius: 5px;
+        }
+
+        .strikeout {
+            text-decoration: line-through;
+        }
+    </style>
+
+    <script>
+        var items = [];
+        var value = 0;
+
+        function add() {
+            var item = document.querySelector('[name="item"]').value
+
+            var newItem = {
+                item,
+                value
+            };
+
+            items.push(newItem);
+            draw();
+            document.querySelector('[name="item"]').value = '';
+        }
+
+        function draw() {
+            var str = ``
+            for (var i = 0; i < items.length; i++) {
+                str += `
+                    <tr ${((items[i].value === 1) ? 'class="strikeout"' : 'class=""')}>
+                        <td>${items[i].item}</td>
+                        <td><input type="button" value="Mark as buyed" class="itemBtn" onclick="change(${i});"></td>
+                    </tr>
+                `
+            }
+            document.querySelector("table>tbody").innerHTML = str;
+        }
+
+        function change(idx) {
+            document.getElementById("myTable").rows[idx + 1].classList.add("strikeout");
+            items[idx].value = 1;
+            console.log(items[idx])
+        }
+
+        function sorteaza(direction, prop) {
+            items.sort(function (a, b) {
+                if (a[prop] > b[prop]) {
+                    return ((direction === 'asc') ? 1 : -1);
+                } else if (a[prop] < b[prop]) {
+                    return ((direction === 'asc') ? -1 : 1);
+                } else {
+                    return 0
+                }
+            });
+            draw();
+        }
+
+        //merge si fara functia asta pentru ca am input type="submit" 
+        //When a form is sent using Enter on an input field, a click event triggers on the <input type="submit">
+        function checkIfEnter(event) {
+            if (event.keyCode === 13) {
+                document.forms["myForm"].preventDefault();
+                add();
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="backg">
+        <br />
+        <form id="myForm">
+            <br />
+            <h1>SHOPPING LIST</h1>
+            <br />
+            <fieldset>
+
+                <input type="text" name="item" id="item" tabindex="1" title="Introduceti produsul"
+                    onkeydown="checkIfEnter(event)" />
+                <input type="submit" tabindex="2" value="Add item" id="btn" onclick="event.preventDefault(); add()" />
+
+                <br /><br />
+                <div>
+                    <input type="button" tabindex="3" value="Sort asc" class="sort" onclick="sorteaza('asc','item')" />
+                    <input type="button" tabindex="4" value="Sort desc" class="sort"
+                        onclick="sorteaza('desc','item')" />
+                </div>
+            </fieldset>
+
+
+
+            <fieldset class="hidden" id="ftable" style="margin-top:0px;">
+                <table id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Item description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+
+</html>
