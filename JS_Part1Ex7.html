@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script>
+
+
+        /**
+         6. Functie care verifica daca N este numar prim (restul impartirii la 1 si la N ==0)
+         */
+        function checkPrimeNumber(n) {
+            if (n === 1) {
+                return false;
+            }
+            else {
+                for (var i = 2; i < n / 2 + 1; i++)    // n/2 pentru ca nu exista divizori in intervalul ((n/2)+1)-n
+                {
+                    if (n % i === 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        console.log("Function checkPrimeNumber result:");
+        console.log("1 -> " + checkPrimeNumber(1));
+        console.log("2 -> " + checkPrimeNumber(2));
+        console.log("4 -> " + checkPrimeNumber(4));
+        console.log("5 -> " + checkPrimeNumber(5));
+        console.log("6 -> " + checkPrimeNumber(6));
+        console.log("11 -> " + checkPrimeNumber(11));
+        console.log("15 -> " + checkPrimeNumber(15));
+        console.log("37 -> " + checkPrimeNumber(37));
+        console.log("100 -> " + checkPrimeNumber(100));
+
+        /**
+         7a. Functie care intoarce suma primelor N numere prime - prin apelarea functiei precedente
+       */
+        function sumFirstNPrimeNumbersVarA(n) {
+            var total = 2;
+            var count = 1;
+
+            if (n == 1) { total = null; }
+            for (var i = 3; count < n; i++) {
+
+                if (checkPrimeNumber(i) === true) {
+                    total += i
+                    count++;
+                };
+            }
+            return total;
+        }
+
+        console.log("Function sumFirstNPrimeNumbersVarA result:");
+        console.log("1 -> " + sumFirstNPrimeNumbersVarA(1));
+        console.log("2 -> " + sumFirstNPrimeNumbersVarA(2));
+        console.log("3 -> " + sumFirstNPrimeNumbersVarA(3));
+        console.log("4 -> " + sumFirstNPrimeNumbersVarA(4));
+        console.log("5 -> " + sumFirstNPrimeNumbersVarA(5));
+        console.log("7 -> " + sumFirstNPrimeNumbersVarA(7));
+        console.log("10 -> " + sumFirstNPrimeNumbersVarA(10));
+        console.log("15 -> " + sumFirstNPrimeNumbersVarA(15));
+        console.log("17 -> " + sumFirstNPrimeNumbersVarA(17));
+        console.log("40 -> " + sumFirstNPrimeNumbersVarA(40));
+        console.log("53 -> " + sumFirstNPrimeNumbersVarA(53));
+        console.log("100 -> " + sumFirstNPrimeNumbersVarA(100));
+
+        /**
+         7b. Functie care intoarce suma primelor N numere prime - fara apel de alta functie
+        */
+        function sumFirstNPrimeNumbersVarB(n) {
+            var total = 2;
+            var count = 1;
+            var add = true;
+
+            if (n == 1) { total = null; }
+            for (var x = 3; count < n; x++) {
+                for (var i = 2; i <= x / 2; i++) {
+                    if (x % i === 0) {
+                        add = false;
+                        break;
+                    } else {
+                        add = true;
+                    }
+                }
+                if (add == true) {
+                    total += x;
+                    count++;
+                }
+            }
+            return total;
+        }
+
+        console.log("Function sumFirstNPrimeNumbersVarB result:");
+        console.log("1 -> " + sumFirstNPrimeNumbersVarB(1));
+        console.log("2 -> " + sumFirstNPrimeNumbersVarB(2));
+        console.log("3 -> " + sumFirstNPrimeNumbersVarB(3));
+        console.log("4 -> " + sumFirstNPrimeNumbersVarB(4));
+        console.log("5 -> " + sumFirstNPrimeNumbersVarB(5));
+        console.log("7 -> " + sumFirstNPrimeNumbersVarB(7));
+        console.log("10 -> " + sumFirstNPrimeNumbersVarB(10));
+        console.log("15 -> " + sumFirstNPrimeNumbersVarB(15));
+        console.log("17 -> " + sumFirstNPrimeNumbersVarB(17));
+        console.log("40 -> " + sumFirstNPrimeNumbersVarB(40));
+        console.log("53 -> " + sumFirstNPrimeNumbersVarB(53));
+        console.log("100 -> " + sumFirstNPrimeNumbersVarB(100));
+
+
+
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
