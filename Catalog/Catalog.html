@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tema DOM - Catalog de note</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Tema DOM - Catalog de note">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="lista_elevi_wrapper">
+
+            <h1> Lista elevi</h1>
+            <fieldset>
+                <label>Nume:<input type="text" name="numeElev" id="nume" onkeydown="checkIfEnter(this,event)" /></label>
+                <button type="button" onclick="addElev()">Adauga elev</button>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <!--   <span><a href="#" class="sorteaza">Sorteaza ascendent dupa medie note</a></span>
+                </br>
+                <span><a href="#" class="sorteaza">Sorteaza desscendent dupa medie note</a></span>
+                </br>
+                 -->
+                <span id="msg">Nici un elev adaugat </span>
+                <br>
+
+                <table id="elevTable" class="hidden" width=100%;>
+                        <colgroup>
+                            <col style="width:30%">
+                            <col style="width:39%">
+                            <col style="width:30px">
+                        </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Nume</th>
+                            <th><button onclick="sorteaza('asc','medie')" title="Sorteaza ascendent dupa medie"
+                                    class="btnSortAsc"><img src="imgs\sort_ascending.png"
+                                        alt="Sorteaza ascendent dupa medie" "></button>Medie note<button onclick="
+                                        sorteaza('desc','medie')" title="Sorteaza descendent dupa medie"
+                                        class="btnSortDesc"><img src="imgs\sort_descending.jpg"
+                                        alt="Sorteaza descendent dupa medie" "></button></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </fieldset>
+        </div>
+
+        <div id = "note_elev_wrapper" class="hidden">
+
+            <h1> Note elev: </h1>
+
+            <fieldset>
+                <label>Nota:<input type="number" name="notaElev" id="nota" onkeydown="checkIfEnter(this,event)"" /></label>
+                <button type="button" onclick="adaugaNota();">Adauga nota</button> 
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <!--   <span><a href="#" class="sorteaza">Sorteaza ascendent dupa medie note</a></span>
+                </br>
+                <span><a href="#" class="sorteaza">Sorteaza desscendent dupa medie note</a></span>
+                </br>
+                -->
+                <span id="msgNota">Nici o nota adaugata </span>
+                <br>
+                <table id="noteTable" class="hidden" width=100%;>
+                        <thead>
+                            <tr>
+                                <th><button onclick="sorteaza('asc','note')" title="Sorteaza ascendent notele"
+                                        class="btnSortAsc"><img src="imgs\sort_ascending.png"
+                                            alt="Sorteaza ascendent notele" "></button>Note<button onclick="
+                                            sorteaza('desc','note')" title="Sorteaza descendent notele"
+                                            class="btnSortDesc"><img src="imgs\sort_descending.jpg"
+                                            alt="Sorteaza descendent notele" "></button></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <br /><br />
+                    <button type="button" onclick="ascundeNote();" style="float: right;">Ascunde notele</button> 
+            </fieldset>
+
+        </div>
+    </div>
+</body>
+
+</html>

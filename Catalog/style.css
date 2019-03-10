@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+#main{
+    display: flex;
+    width:100%;
+
+}
+
+#lista_elevi_wrapper{
+    width:100%;
+    background-color: blanchedalmond;
+    border:1px solid burlywood;
+    border-radius: 5px;
+}
+
+#note_elev_wrapper{
+    background-color:#eddbfd;
+    border:1px solid mediumpurple;
+    border-radius: 5px;
+}
+
+.hidden{
+    display:none;
+}
+
+.active{
+    flex-basis: 50%;
+    flex-grow: 0;
+}
+
+h1{
+    margin-left: 10px;
+}
+
+fieldset{
+    padding:10px;
+    border-radius: 5px;
+}
+
+ a.sorteaza:link{ 
+    text-decoration:none;
+    
+}
+
+a.sorteaza:visited {color:#0000ff;}
+a.sorteaza:hover {
+    background-color: coral;    
+    color:white
+}
+
+th,
+td {
+    text-align: center;
+}
+
+.invalid{
+    border-color:red;
+}
+
+.errMsg{
+    color:red;
+}
+
+img{
+    width:10px; 
+    height:14px;
+}
+
+.btnSortAsc{
+    margin-right: 5px;
+}
+
+.btnSortDesc{
+    margin-left: 5px;  
+}
+
+button{
+    border-radius: 5px;
+    background-color: cornsilk;
+    border:1px solid black;
+    height: 20px;
+}
+
+input[type="button"]{
+    border-radius: 5px;
+    background-color: cornsilk;
+    border:1px solid black;
+    height: 20px;
+}
