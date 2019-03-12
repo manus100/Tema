@@ -33,8 +33,11 @@ class Elev {
 }
 
 function addElev() {
-    var numeElev = document.querySelector("#nume").value
-    if (numeElev.length >= 3) {
+    var numeElev = document.querySelector("#nume").value;
+    let result = catalog.findIndex(obj => {
+        return obj.nume.toLowerCase() === numeElev.toLowerCase();
+    })
+    if (numeElev.length >= 3 && result < 0) {
         catalog.push(new Elev(numeElev));
         console.log(catalog);
 
@@ -46,6 +49,9 @@ function addElev() {
 
     } else {
         document.querySelector("#nume").classList.add("invalid");
+        if (result >= 0) {
+            alert('Acest elev este deja introdus!')
+        }
     }
 }
 
@@ -135,6 +141,13 @@ function sorteaza(direction, prop) {
             }
         });
         draw();
+        
+        let numeSelectat = document.getElementById('note_elev_wrapper').getElementsByTagName('h1')[0].innerHTML.split(": ")[1].toLowerCase();
+        let result = catalog.findIndex(obj => {
+            return obj.nume.toLowerCase() === numeSelectat;
+        })
+
+        catalogIdx = result;
     } else {
         ((direction === 'asc') ? catalog[catalogIdx].sortNote() : catalog[catalogIdx].sortNoteDesc());
         drawNote();
