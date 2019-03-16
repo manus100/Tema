@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wheather app</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Weather app">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\style.css">
+    <script type="text/javascript" src="js\script.js"></script>
+ <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClF-HHZIUUpVSDnu5Au9yxiPV2yqiWQl8&libraries=places&callback=initAutocomplete" async defer></script> -->
+</head>
+
+<body>
+    <div id="main">
+        
+        <div id="search">
+                <input type="text" title="Introduceti orasul" id="city" onkeypress="getWeatherIfEnter(event);"/>    <!-- onkeypress="initAutocomplete();-->
+                <button class="displButton" onclick="getCurrentWeather();">Afiseaza vremea</button>
+                <button class="displButton" onclick="getWeatherForecast();">Afiseaza prognoza</button>
+        </div>
+        <br>    
+        <div id="now">
+            <h2>Vremea acum</h2>
+            <hr>
+                <div class="weatherDetails">
+                    <img src="" id="img">
+                    <div id="descriere">Descriere:</div>
+                    <div id="umiditate">Umiditate:</div>
+                    <div id="presiune">Presiune:</div>
+                    <div id="temp">Temperatura curenta:</div>
+                    <div id="tmin">Minima zilei:</div>
+                    <div id="tmax">Maxima zilei:</div>
+                </div>
+
+                <div id="map">
+                  <iframe id="imap" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>    
+                </div>
+        </div>
+        <br>
+        <div id="forecast">
+                <h2>Vremea in urmatoarele zile</h2>
+                <hr>
+                <table  width=90%; cellspacing="20">
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr class="row00">
+                    <td id="day1"></td>
+                    <td id="day2"></td>
+                    <td id="day3"></td>
+                    <td id="day4"></td>
+                    <td id="day5"></td>
+                    <td id="day6"></td>
+                  </tr>
+                  <tr class="row03">
+                    <td id="day1"></td>
+                    <td id="day2"></td>
+                    <td id="day3"></td>
+                    <td id="day4"></td>
+                    <td id="day5"></td>
+                    <td id="day6"></td>
+                  </tr>
+                  <tr class="row06">
+                    <td id="day1"></td>
+                      <td id="day2"></td>
+                      <td id="day3"></td>
+                      <td id="day4"></td>
+                      <td id="day5"></td>
+                      <td id="day6"></td>
+                  </tr>
+                  <tr class="row09">
+                      <td id="day1"></td>
+                      <td id="day2"></td>
+                      <td id="day3"></td>
+                      <td id="day4"></td>
+                      <td id="day5"></td>
+                      <td id="day6"></td>
+                  </tr>
+                  <tr class="row12">
+                      <td id="day1"></td>
+                      <td id="day2"></td>
+                      <td id="day3"></td>
+                      <td id="day4"></td>
+                      <td id="day5"></td>
+                      <td id="day6"></td>
+                  </tr>
+                  <tr class="row15">
+                      <td id="day1"></td>
+                      <td id="day2"></td>
+                      <td id="day3"></td>
+                      <td id="day4"></td>
+                      <td id="day5"></td>
+                      <td id="day6"></td>
+                  </tr> 
+                  <tr class="row18">
+                      <td id="day1"></td>
+                      <td id="day2"></td>
+                      <td id="day3"></td>
+                      <td id="day4"></td>
+                      <td id="day5"></td>
+                      <td id="day6"></td>
+                  </tr>
+                  <tr class="row21">
+                      <td id="day1"></td>
+                      <td id="day2"></td>
+                      <td id="day3"></td>
+                      <td id="day4"></td>
+                      <td id="day5"></td>
+                      <td id="day6"></td>
+                  </tr>
+                   
+                </table>
+        </div>
+
+    
+    </div>
+</body>
+
+</html>
