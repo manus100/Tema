@@ -62,6 +62,18 @@ function draw(forecast) {
   var str = '';
   var previousDate = 0;
 
+  for (let i=0;i<9;i++){
+    str+=`<tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>`
+  }
+  document.querySelector("table tbody").innerHTML=str;
+  
   for (var i = 0; i < forecast.list.length; i++) {
     if (document.querySelector("table").rows[0].cells[previousDate].innerHTML.length == 0) {
       document.querySelector("table").rows[0].cells[previousDate].innerHTML = 'Ziua: ' + forecast.list[i].dt_txt.substring(0, 10).toString().split("-").reverse().join("/");
