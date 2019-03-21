@@ -67,23 +67,21 @@ function draw(forecast) {
       document.querySelector("table").rows[0].cells[previousDate].innerHTML = 'Ziua: ' + forecast.list[i].dt_txt.substring(0, 10).toString().split("-").reverse().join("/");
       document.querySelector("table").rows[0].cells[previousDate].classList.add("bkg");
     }
-    for (var j = 1; j < document.querySelector("table").rows.length; j++) {
-     if (document.querySelector("table").rows[j].getAttribute("class").substring(3, 5) == forecast.list[i].dt_txt.substring(11, 13)) {
-        console.log(forecast.list[i].dt_txt.substring(11, 13));
-        document.querySelector("table").rows[j].cells[previousDate].innerHTML =
-          `<img src = "${URL_WEATHER_ICON_PREFIX}${forecast.list[i].weather[0].icon}.png"><br>
-              Ora: ${forecast.list[i].dt_txt.substring(11, 16)} <br> 
-              Temperatura: ${forecast.list[i].main.temp} <br>
-              Descriere: ${forecast.list[i].weather[0].description}
-            `
-        break;
+
+    let rowIdx=(parseInt(forecast.list[i].dt_txt.split(" ")[1])/3)+1;
+
+    document.querySelector("table").rows[rowIdx].cells[previousDate].innerHTML =
+    `<img src = "${URL_WEATHER_ICON_PREFIX}${forecast.list[i].weather[0].icon}.png"><br>
+        Ora: ${forecast.list[i].dt_txt.substring(11, 16)} <br> 
+        Temperatura: ${forecast.list[i].main.temp} <br>
+        Descriere: ${forecast.list[i].weather[0].description}
+      `
+      if (rowIdx  == document.querySelector("table").rows.length-1) {
+        previousDate++;
       }
-    }
-    if (j  == document.querySelector("table").rows.length-1) {
-      previousDate++;
-    }
   }
 }
+
 
 
 
