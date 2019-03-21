@@ -50,7 +50,7 @@ function getWeatherForecast() {
   }
   citySearched = document.getElementById("city").value;
 
-  fetch(URL_FORECAST_WEATHER + '?q=' + citySearched + "&APPID=" + apiKey + "&units=metric&cnt=45")
+  fetch(URL_FORECAST_WEATHER + '?q=' + citySearched + "&APPID=" + apiKey + "&units=metric&cnt=40")
     .then(response => response.json())
     .then(forecastResult => {
       draw(forecastResult)
